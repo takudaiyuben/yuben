@@ -1,0 +1,441 @@
+/* 全体のスタイル */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212; /* 黒背景 */
+    color: white;
+    display: flex;
+}
+
+/* 左側ナビゲーション */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #ff7f00;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.logo {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.sidebar ul li {
+    margin: 20px 0;
+}
+
+.sidebar ul li a {
+    color: black;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 10px;
+    display: block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 3Dエフェクト */
+.sidebar ul li a:hover {
+    transform: translateX(10px);
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* メインコンテンツ */
+main {
+    margin-left: 250px;
+    flex-grow: 1;
+    padding: 50px;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background: url('katsura-taro.jpg') no-repeat center center/cover;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* 総裁の写真 */
+.president-photo {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border: 5px solid #ff7f00;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+button {
+    background: #ff7f00;
+    border: none;
+    padding: 10px 20px;
+    color: black;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+}
+
+
+/* 🔥 メインタイトル（白く光るエフェクト） */
+.hero h2 {
+    font-size: 4em; /* フォントサイズを大きく */
+    font-weight: bold;
+    text-align: center;
+    font-family: "Noto Serif JP", serif; /* 和風でカッコいいフォント */
+    color: white; /* 全体を白に変更 */
+    text-shadow: 5px 5px 15px rgba(255, 255, 255, 0.8), 
+                 0 0 30px rgba(255, 255, 255, 1); /* 白の光るエフェクト */
+    animation: fadeZoom 2s ease-out forwards, glow 2s infinite alternate;
+}
+
+/* 🔥 サブタイトル（少し小さく＆フェードイン） */
+.hero p {
+    font-size: 2em; /* 文字を大きめに */
+    font-weight: bold;
+    text-align: center;
+    font-family: "Noto Sans JP", sans-serif;
+    color: white;
+    opacity: 0; /* 初期状態で非表示 */
+    animation: fadeInUp 2s ease-out forwards 1s; /* 1秒遅れてフェードイン */
+}
+
+/* 🔥 タイトルのズームイン＆フェードイン */
+@keyframes fadeZoom {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* 🔥 サブタイトルのフェードイン */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 🔥 白く光るエフェクト */
+@keyframes glow {
+    0% {
+        text-shadow: 5px 5px 15px rgba(255, 255, 255, 0.8), 
+                     0 0 30px rgba(255, 255, 255, 1);
+    }
+    100% {
+        text-shadow: 5px 5px 20px rgba(255, 255, 255, 1), 
+                     0 0 40px rgba(255, 255, 255, 1);
+    }
+}
+
+/* 🔥 ページ全体のフェードインアニメーション */
+body {
+    opacity: 0; /* 初期状態で透明 */
+    animation: fadeInPage 1.5s ease-in-out forwards; /* 1.5秒でフェードイン */
+}
+
+/* 🔥 フェードインのアニメーション */
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* 🔥 セクションごとに順番にフェードイン */
+.content {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* JSで適用（下のscript.jsとセットで使う） */
+.content.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 雄弁会とは のセクションデザイン */
+#about {
+    padding: 50px;
+    background-color: #222; /* 背景をダークに */
+    color: white; /* 文字を白に */
+    border-left: 5px solid #ff7f00; /* 左にオレンジのラインを追加 */
+}
+
+/* 見出しのスタイル */
+#about h2 {
+    font-size: 3em;
+    font-weight: bold;
+    color: #ff7f00;
+    text-align: left;
+    border-bottom: 2px solid #ff7f00;
+    padding-bottom: 10px;
+}
+
+/* 本文のスタイル */
+#about p {
+    font-size: 1.2em;
+    line-height: 1.8;
+}
+
+/* 引用部分（blockquote） */
+#about blockquote {
+    font-size: 1.2em;
+    font-style: italic;
+    padding: 20px;
+    margin: 20px 0;
+    border-left: 4px solid #ff7f00;
+    background: rgba(255, 127, 0, 0.1);
+    color: #ffb74d;
+}
+
+/* 注意書き（※1など） */
+#about .note {
+    font-size: 0.9em;
+    color: #bbb;
+    border-top: 1px solid #ff7f00;
+    padding-top: 10px;
+    margin-top: 20px;
+}
+
+/* 🔥 総裁挨拶のデザイン */
+#president {
+    padding: 50px;
+    background-color: #222; /* ダークな背景 */
+    color: white; /* 文字を白に */
+    border-left: 5px solid #ff7f00; /* 左にオレンジのライン */
+}
+
+/* 🔥 見出しのスタイル */
+#president h2 {
+    font-size: 3em;
+    font-weight: bold;
+    color: #ff7f00;
+    text-align: left;
+    border-bottom: 2px solid #ff7f00;
+    padding-bottom: 10px;
+}
+
+/* 🔥 総裁の写真とテキストを横並び */
+.president-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* 🔥 総裁の写真のスタイル */
+.president-photo {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px; /* 角を少し丸くする */
+    border: 3px solid #ff7f00;
+    box-shadow: 0 0 15px rgba(255, 127, 0, 0.5);
+}
+
+/* 🔥 テキストのスタイル */
+.president-text {
+    flex: 1;
+    font-size: 1.2em;
+    line-height: 1.8;
+}
+
+/* 🔥 引用部分の強調 */
+.president-text .quote {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ffb74d;
+    text-shadow: 2px 2px 5px rgba(255, 165, 0, 0.5);
+    border-left: 5px solid #ff7f00;
+    padding-left: 15px;
+    margin-bottom: 20px;
+}
+
+/* 🔥 総裁名のスタイル */
+.president-name {
+    margin-top: 20px;
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align: right;
+    color: #ff7f00;
+}
+.president-name strong {
+    font-size: 1.5em;
+    display: block;
+}
+
+/* 🔥 ロゴとタイトルのコンテナ */
+.logo-title {
+    display: flex;
+    align-items: center; /* 縦の位置を中央揃え */
+    gap: 10px; /* ロゴとタイトルの間隔 */
+    padding: 10px;
+    justify-content: center;
+    width: 100%;
+}
+
+/* 🔥 ロゴのスタイル */
+.logo {
+    width: 50px; /* ロゴのサイズ */
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* 🔥 ロゴをホバーしたときに少し大きく */
+.logo:hover {
+    transform: scale(1.1);
+}
+
+/* 🔥 サイトタイトル（拓殖大学雄弁会） */
+.site-title {
+    font-size: 1.5em; /* 文字サイズ */
+    color: black; /* 文字色を黒に */
+    font-weight: bold;
+    margin: 0;
+    text-align: left;
+    font-family: "Noto Serif JP", serif; /* 高級感のある日本語フォント */
+}
+
+/* 🔥 活動内容のデザイン */
+#activities {
+    padding: 50px;
+    background-color: #222;
+    color: white;
+    border-left: 5px solid #ff7f00;
+}
+
+/* 🔥 見出しスタイル */
+#activities h2 {
+    font-size: 3em;
+    font-weight: bold;
+    color: #ff7f00;
+    border-bottom: 2px solid #ff7f00;
+    padding-bottom: 10px;
+    text-align: left;
+}
+
+/* 🔥 活動内容とSNSを横並び */
+.activities-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+/* 🔥 活動内容のテキスト */
+.activities-text {
+    flex: 1;
+    font-size: 1.2em;
+    line-height: 1.8;
+}
+
+/* 🔥 活動リスト */
+.activities-text ul {
+    list-style: none;
+    padding: 0;
+}
+
+.activities-text ul li {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+/* 🔥 SNS全体のコンテナ（横並び） */
+.sns-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* 間隔を空ける */
+    align-items: flex-start;
+    flex-wrap: wrap; /* スマホでは縦並び */
+}
+
+/* 🔥 各SNSのコンテナ */
+.twitter-container,
+.instagram-container {
+    width: 300px; /* 幅を統一 */
+    max-width: 100%;
+    text-align: center;
+}
+
+/* 🔥 X（旧Twitter）埋め込みのサイズ調整 */
+.twitter-tweet {
+    width: 100% !important;
+    max-width: 250px; /* 小さくする */
+}
+
+
+
+/* 🔥 お問い合わせ（シンプルなテキスト） */
+#contact-header {
+    width: 100%;
+    background-color: #222; /* 「活動内容」と統一 */
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    border-left: 5px solid #ff7f00;
+}
+
+/* 🔥 お問い合わせコンテナ */
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 🔥 見出し */
+.contact-container h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #ff7f00;
+}
+
+/* 🔥 お問い合わせの説明 */
+.contact-container p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+/* 🔥 リンクのスタイル */
+.contact-container a {
+    color: #ff7f00;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.contact-container a:hover {
+    color: #ffbb33;
+}
