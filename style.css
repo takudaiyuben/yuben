@@ -440,3 +440,76 @@ body {
     color: #ffbb33;
 }
 
+/* スマホ向けレスポンシブ対応 */
+@media screen and (max-width: 768px) {
+
+  body {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px 0;
+  }
+
+  .sidebar ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .sidebar ul li {
+    margin: 10px;
+  }
+
+  main {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .hero h2 {
+    font-size: 2em;
+  }
+
+  .hero p {
+    font-size: 1.2em;
+  }
+
+  .president-container,
+  .activities-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .president-photo {
+    width: 150px;
+    height: 150px;
+  }
+
+  .president-text {
+    text-align: center;
+  }
+
+  .activities-text {
+    text-align: center;
+  }
+
+  .sns-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  iframe,
+  .twitter-tweet {
+    width: 100% !important;
+    max-width: 300px;
+  }
+
+}
+
